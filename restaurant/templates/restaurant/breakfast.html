@@ -1,0 +1,60 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Breakfast - Le Piteu </title>
+{% endblock %}
+
+{% block css %}
+  {% include "restaurant/css.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <section class="breakfast-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="breakfast-menu-content">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="left-image">
+
+                                    <img src="{% static 'restaurant/img/breakfast_menu.jpg' %}" alt="Breakfast">
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <h2>Breakfast Menu</h2>
+                                <div id="owl-breakfast" class="owl-carousel owl-theme">
+                                  {% if menu_list %}
+                                  {% for menu in menu_list %}
+                                    <div class="item col-md-12">
+                                        <div class="food-item">
+
+                                            <img src="{% static menu.photo  %} " alt="">
+                                            <div class="price">Kz {{menu.price}}</div>
+                                            <div class="text-content">
+                                                <h4>{{menu.name}}</h4>
+                                                <p>{{menu.description}}...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                {% endif %}
+                                  <!-- <img src="{% static 'restaurant/img/breakfast_item.jpg' %}" alt=""> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block js %}
+  {% include "restaurant/js.html" %}
+{% endblock %}
